@@ -3,12 +3,16 @@ import { AppService } from './app.service';
 import { FamiliesModule } from './families/families.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { configs } from 'config/configuration';
+import { MembersModule } from './members/members.module';
 
 @Module({
   imports: [
     FamiliesModule,
-    MongooseModule.forRoot(configs.mongoUrl, {
-      autoCreate: true,
+    MembersModule,
+    MongooseModule.forRootAsync({
+      useFactory: () => ({
+        uri: configs.mongoUrl,
+      }),
     }),
   ],
   providers: [AppService],

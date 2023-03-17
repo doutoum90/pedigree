@@ -26,16 +26,19 @@ export class Members {
   @Prop()
   surNom: String;
   @Prop()
-  dateExacte: boolean;
+  dateNaissanceExacte: boolean;
   @Prop()
   dateNaissance: String;
   @Prop()
   mort: boolean;
   @Prop()
+  dateDecesExacte: boolean;
+  @Prop()
   dateDeces: String;
   @Prop()
   histoire: String;
-
+  @Prop()
+  famId: String;
   @Prop()
   sex: String;
 }

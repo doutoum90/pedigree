@@ -10,7 +10,6 @@ import {
 import { FamiliesService } from './families.service';
 import { CreateFamilyDto } from './dto/create-family.dto';
 import { UpdateFamilyDto } from './dto/update-family.dto';
-import { Family } from './entities/family.entity';
 
 @Controller('families')
 export class FamiliesController {
@@ -26,15 +25,6 @@ export class FamiliesController {
     return (await this.familiesService.findAll()) as any;
   }
 
-  @Get('/sibling/:id')
-  async findSibling(@Param('id') id: string) {
-    return (await this.familiesService.findSibling(id)) as any;
-  }
-
-  @Get('parents/:id')
-  findParents(@Param('id') id: string) {
-    return this.familiesService.findParents(id);
-  }
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.familiesService.findOne(id);

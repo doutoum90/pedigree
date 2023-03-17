@@ -1,30 +1,30 @@
 import { Injectable } from '@nestjs/common';
-import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { Members } from '../families/models/members.schema';
+import { Model } from 'mongoose';
 import { CreateFamilyDto } from './dto/create-family.dto';
 import { UpdateFamilyDto } from './dto/update-family.dto';
+import { Family } from './models/family.schema';
 
 @Injectable()
 export class FamiliesService {
   constructor(
-    @InjectModel(Members.name)
-    private readonly membersModel: Model<Members>,
+    @InjectModel(Family.name)
+    private readonly familiesModel: Model<Family>,
   ) {}
 
   create(createFamilyDto: CreateFamilyDto) {
-    return new this.membersModel(createFamilyDto).save();
+    return new this.familiesModel(createFamilyDto).save();
   }
 
   async findAll() {
-    const members = await this.membersModel.find().exec();
-    return members.map(
+    const members = await this.familiesModel.find().exec();
+    return members?.map(
       (mem: any) => <any>{ ...mem._doc, id: mem._doc._id.toString() },
     );
   }
 
   async findSibling(id: string) {
-    const members = await this.membersModel
+    const members = await this.familiesModel
       .find({
         parentId: id,
       })
@@ -34,19 +34,19 @@ export class FamiliesService {
     );
   }
   async findParents(id: string) {
-    const member: any = await this.membersModel.findById(id).exec();
+    const member: any = await this.familiesModel.findById(id).exec();
     return <any>{ ...member._doc, id: member._doc._id.toString() };
   }
 
   findOne(id: string) {
-    return this.membersModel.findById(id).exec();
+    return this.familiesModel.findById(id).exec();
   }
 
   update(id: string, updateFamilyDto: UpdateFamilyDto) {
-    return this.membersModel.findByIdAndUpdate(id, updateFamilyDto);
+    return this.familiesModel.findByIdAndUpdate(id, updateFamilyDto);
   }
 
   remove(id: string) {
-    return this.membersModel.findByIdAndDelete(id);
+    return this.familiesModel.findByIdAndDelete(id);
   }
 }

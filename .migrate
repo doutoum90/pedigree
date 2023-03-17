@@ -1,9 +1,9 @@
 {
-  "lastRun": "1678688759725-migrationts.ts",
+  "lastRun": null,
   "migrations": [
     {
       "title": "1678688759725-migrationts.ts",
-      "timestamp": 1678689206565
+      "timestamp": null
     }
   ]
 }

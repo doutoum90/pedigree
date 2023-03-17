@@ -1,4 +1,4 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { Members } from '../models/members.schema';
+import { Family } from '../models/family.schema';
 
-export class UpdateFamilyDto extends PartialType(Members) {}
+export class UpdateFamilyDto extends PartialType(Family) {}

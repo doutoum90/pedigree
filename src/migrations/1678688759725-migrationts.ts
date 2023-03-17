@@ -1,4 +1,3 @@
-import { Members } from '../families/models/members.schema';
 import { getDb } from '../migrations-utils/db';
 
 export const up = async () => {
@@ -24,8 +23,7 @@ export const up = async () => {
 
 export const down = async () => {
   const db = await getDb();
-  const collection = await db.collection('members');
-  const del = await collection.deleteMany({});
-  const list = collection.find();
+  const members = await db.collection('members').deleteMany({});
+  const families = await db.collection('families').deleteMany({});
   console.log('deletion');
 };
