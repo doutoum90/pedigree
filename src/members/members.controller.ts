@@ -58,6 +58,19 @@ export class MembersController {
   ) {
     return this.membersService.findPartner(famID, id, req.sex);
   }
+
+  @Post('partner/:partnerId')
+  addPartner(
+    @Param('famId') famID: string,
+    @Param('partnerId') partnerId: string,
+    @Body() createMemberDto: CreateMemberDto
+  ) {
+    return this.membersService.addPartner(
+      famID,
+      partnerId,
+      createMemberDto,
+    );
+  }
   @Get('partners')
   findPartners(
     @Param('famId') famID: string,
