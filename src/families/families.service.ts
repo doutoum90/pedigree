@@ -26,7 +26,7 @@ export class FamiliesService {
   async findSibling(id: string) {
     const members = await this.familiesModel
       .find({
-        parentId: id,
+        parentIds: id,
       })
       .exec();
     return members.map(

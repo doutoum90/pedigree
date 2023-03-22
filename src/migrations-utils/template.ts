@@ -11,7 +11,7 @@ export const up = async () => {
     tags: 'Ceo,tag1,manager,cto',
     isLoggedUser: 'false',
     positionName: 'Chief Executive Officer',
-    parentId: '',
+    parentIds: '',
     size: '',
   };
   const collection = await db.collection('members');

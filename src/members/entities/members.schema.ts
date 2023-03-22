@@ -20,7 +20,9 @@ export class Members {
   @Prop()
   positionName: String;
   @Prop()
-  parentId: String;
+  motherId: String;
+  @Prop()
+  fatherId: String;
   @Prop()
   size: String;
   @Prop()
@@ -40,7 +42,13 @@ export class Members {
   @Prop()
   famId: String;
   @Prop()
+  femalePartenersId: String[];
+  @Prop()
+  malPartenerIds: String[];
+  @Prop()
   sex: String;
+  @Prop()
+  root: boolean = false;
 }
 
 export const MembersSchema = SchemaFactory.createForClass(Members);
